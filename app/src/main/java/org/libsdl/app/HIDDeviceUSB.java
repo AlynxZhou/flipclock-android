@@ -53,7 +53,14 @@ class HIDDeviceUSB implements HIDDevice {
     public String getSerialNumber() {
         String result = null;
         if (Build.VERSION.SDK_INT >= 21) {
-            result = mDevice.getSerialNumber();
+            // If `targetSdkVersion` is 29 or higher, `getProductName()` will
+            // throw `SecurityException` when no permission requested. Not sure
+            // why SDL2 needs this but it seems not important so just ignore it.
+            try {
+                result = mDevice.getSerialNumber();
+            } catch (SecurityException e) {
+
+            }
         }
         if (result == null) {
             result = "";

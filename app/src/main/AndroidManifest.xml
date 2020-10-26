@@ -14,12 +14,12 @@
         android:required="false" />
 
     <!-- Game controller support -->
-    <uses-feature
+    <!-- <uses-feature
         android:name="android.hardware.bluetooth"
-        android:required="false" />
-    <uses-feature
+        android:required="false" /> -->
+    <!-- <uses-feature
         android:name="android.hardware.gamepad"
-        android:required="false" />
+        android:required="false" /> -->
     <uses-feature
         android:name="android.hardware.usb.host"
         android:required="false" />
