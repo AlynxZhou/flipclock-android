@@ -20,6 +20,7 @@ LOCAL_SRC_FILES := \
 	$(wildcard $(LOCAL_PATH)/src/audio/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/audio/android/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/audio/dummy/*.c) \
+	$(wildcard $(LOCAL_PATH)/src/audio/aaudio/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/audio/openslES/*.c) \
 	$(LOCAL_PATH)/src/atomic/SDL_atomic.c.arm \
 	$(LOCAL_PATH)/src/atomic/SDL_spinlock.c.arm \
@@ -30,10 +31,17 @@ LOCAL_SRC_FILES := \
 	$(wildcard $(LOCAL_PATH)/src/file/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/haptic/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/haptic/android/*.c) \
+	$(wildcard $(LOCAL_PATH)/src/hidapi/*.c) \
+	$(wildcard $(LOCAL_PATH)/src/hidapi/android/*.cpp) \
 	$(wildcard $(LOCAL_PATH)/src/joystick/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/joystick/android/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/joystick/hidapi/*.c) \
+	$(wildcard $(LOCAL_PATH)/src/joystick/virtual/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/loadso/dlopen/*.c) \
+	$(wildcard $(LOCAL_PATH)/src/locale/*.c) \
+	$(wildcard $(LOCAL_PATH)/src/locale/android/*.c) \
+	$(wildcard $(LOCAL_PATH)/src/misc/*.c) \
+	$(wildcard $(LOCAL_PATH)/src/misc/android/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/power/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/power/android/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/filesystem/android/*.c) \
@@ -50,8 +58,6 @@ LOCAL_SRC_FILES := \
 	$(wildcard $(LOCAL_PATH)/src/video/android/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/video/yuv2rgb/*.c) \
 	$(wildcard $(LOCAL_PATH)/src/test/*.c))
-
-LOCAL_SHARED_LIBRARIES := hidapi
 
 LOCAL_CFLAGS += -DGL_GLEXT_PROTOTYPES
 LOCAL_CFLAGS += \
@@ -72,7 +78,6 @@ LOCAL_CFLAGS += \
 
 # Warnings we haven't fixed (yet)
 LOCAL_CFLAGS += -Wno-unused-parameter -Wno-sign-compare
- 
 
 LOCAL_LDLIBS := -ldl -lGLESv1_CM -lGLESv2 -lOpenSLES -llog -landroid
 
@@ -115,22 +120,4 @@ LOCAL_MODULE_FILENAME := libSDL2main
 
 include $(BUILD_STATIC_LIBRARY)
 
-###########################
-#
-# hidapi library
-#
-###########################
-
-include $(CLEAR_VARS)
-
-LOCAL_CPPFLAGS += -std=c++11
-
-LOCAL_SRC_FILES := src/hidapi/android/hid.cpp
-
-LOCAL_MODULE := libhidapi
-LOCAL_LDLIBS := -llog
-
-include $(BUILD_SHARED_LIBRARY)
-
 $(call import-module,android/cpufeatures)
-
