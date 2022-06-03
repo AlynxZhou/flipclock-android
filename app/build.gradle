@@ -13,7 +13,7 @@ android {
         if (buildAsApplication) {
             applicationId "one.alynx.flipclock"
         }
-        minSdkVersion 23
+        minSdkVersion 16
         targetSdkVersion 32
         versionCode 6
         versionName "1.0.5"
@@ -31,7 +31,9 @@ android {
     }
     buildTypes {
         release {
+            // It seems enable minify and shrink resources will make SDL2 crash.
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
