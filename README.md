@@ -16,7 +16,7 @@ First, find a phone with LCD screen. Modern phones with non-square screens use O
 
 Clone this repo, then run `git submodule update --init` to get FlipClock, then the font symlink under assets should work, if not, run `ln -s app/jni/flipclock/dists/flipclock.ttf app/src/main/assets/flipclock.ttf`. Open this project with Android Studio and try to build by yourself.
 
-When the APP started, double tap to switch between 12/24-hour clock format, rotate your phone to switch between landscape and portrait, don't forget to enable your phone's auto-rotate option.
+When the APP started, 2 fingers touch/double tap to switch between 12/24-hour clock format, 3 fingers touch to toggle second, rotate your phone to switch between landscape and portrait, don't forget to enable your phone's auto-rotate option.
 
 Java shim was taken directly from SDL2's `android-project` subdir and I won't modify them to keep consistnt with upstream.
 
