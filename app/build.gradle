@@ -8,13 +8,13 @@ else {
 }
 
 android {
-    compileSdkVersion 32
     defaultConfig {
+        compileSdk 33
         if (buildAsApplication) {
             applicationId "one.alynx.flipclock"
         }
         minSdkVersion 16
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode 8
         versionName "1.1.0"
         externalNativeBuild {
